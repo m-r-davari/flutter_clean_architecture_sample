@@ -1,6 +1,6 @@
 # clean_architecture_sample
 
-A new Flutter project.
+A Flutter sample project for clean architecture.
 
 ## Getting Started
 
