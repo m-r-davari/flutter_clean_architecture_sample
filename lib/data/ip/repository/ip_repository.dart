@@ -1,6 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_clean_architecture_sample/core/errors/failure.dart';
 import 'package:flutter_clean_architecture_sample/core/errors/general_exception.dart';
 import 'package:flutter_clean_architecture_sample/core/errors/general_failure.dart';
+import 'package:flutter_clean_architecture_sample/core/errors/network_exception.dart';
+import 'package:flutter_clean_architecture_sample/core/errors/network_failure.dart';
 import 'package:flutter_clean_architecture_sample/data/ip/datasource/remote/i_ip_remote_datasource.dart';
 import 'package:flutter_clean_architecture_sample/data/ip/model/ip_model.dart';
 import 'package:flutter_clean_architecture_sample/domain/ip/entity/ip_entity.dart';
@@ -21,6 +24,11 @@ class IpRepository extends IIpRepository {
     }
     on GeneralException catch (exc){
       return Left(GeneralFailure(exc.message));
+    }
+    on NetworkException catch (exc){
+      return Left(NetworkFailure(exc.message));
+    } catch (exc) {
+      return Left(GeneralFailure(exc.toString()));
     }
   }
 

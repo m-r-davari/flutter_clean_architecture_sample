@@ -1,3 +1,4 @@
+import 'package:flutter_clean_architecture_sample/core/errors/network_exception.dart';
 import 'package:flutter_clean_architecture_sample/core/network/i_api_request_manager.dart';
 import 'package:dio/dio.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
@@ -99,12 +100,9 @@ class DioApiRequestManager extends IApiRequestManager {
       return response.data;
     }
     on DioError catch(err){
-      rethrow;
+      throw NetworkException(message: err.message ?? '',code: err.response?.statusCode);
     }
-    catch(err){
-      print('errrrrrrrrrr $err');
-      rethrow;
-    }
+
   }
 
 
@@ -115,11 +113,9 @@ class DioApiRequestManager extends IApiRequestManager {
       response.data;
     }
     on DioError catch(err){
-      rethrow;
+      throw NetworkException(message: err.message ?? '',code: err.response?.statusCode);
     }
-    on Exception catch(err){
-      rethrow;
-    }
+
   }
 
 

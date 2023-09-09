@@ -1,10 +1,10 @@
 import 'package:flutter_clean_architecture_sample/core/errors/failure.dart';
 
-class ServerFailure extends Failure{
+class NetworkFailure extends Failure{
 
   final String _message;
 
-  ServerFailure(this._message);
+  NetworkFailure(this._message);
 
   @override
   String get message => _message;

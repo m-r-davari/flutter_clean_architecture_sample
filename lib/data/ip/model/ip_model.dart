@@ -18,4 +18,12 @@ class IpModel {
     data['type'] = this.type;
     return data;
   }
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is IpModel && runtimeType == other.runtimeType && success == other.success && ip == other.ip && type == other.type;
+
+  @override
+  int get hashCode => success.hashCode ^ ip.hashCode ^ type.hashCode;
 }
