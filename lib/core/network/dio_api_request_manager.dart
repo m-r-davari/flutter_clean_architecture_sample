@@ -62,7 +62,7 @@ class DioApiRequestManager extends IApiRequestManager {
                 DioError(
                   requestOptions: error.requestOptions,
                   response: error.response,
-                  error: 'heck Your Internet'
+                  error: 'Check Your Internet'
                 )
               );
               break;
@@ -100,7 +100,7 @@ class DioApiRequestManager extends IApiRequestManager {
       return response.data;
     }
     on DioError catch(err){
-      throw NetworkException(message: err.message ?? '',code: err.response?.statusCode);
+      throw NetworkException(message: err.message ?? 'UnexpectedDioError',code: err.response?.statusCode);
     }
 
   }
@@ -113,7 +113,7 @@ class DioApiRequestManager extends IApiRequestManager {
       response.data;
     }
     on DioError catch(err){
-      throw NetworkException(message: err.message ?? '',code: err.response?.statusCode);
+      throw NetworkException(message: err.message ?? 'UnexpectedDioError',code: err.response?.statusCode);
     }
 
   }
