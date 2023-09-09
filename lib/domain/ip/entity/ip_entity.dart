@@ -26,12 +26,11 @@ class IpEntity {
       success: success ?? this.success
   );
 
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is IpEntity && runtimeType == other.runtimeType && ip == other.ip && type == other.type && success == other.success;
 
-
-
-
-
-
-
-
+  @override
+  int get hashCode => ip.hashCode ^ type.hashCode ^ success.hashCode;
 }

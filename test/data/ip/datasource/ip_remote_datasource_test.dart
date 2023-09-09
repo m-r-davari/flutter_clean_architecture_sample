@@ -24,28 +24,32 @@ import 'ip_remote_datasource_test.mocks.dart';
 void main() async {
   //final requestManager = MockNetwork();
 
-  final requestManager = MockIApiRequestManager();
+  final mockRequestManager = MockIApiRequestManager();
   late IpRemoteDataSource ipRemoteDataSource;
 
   setUp(() {
-    ipRemoteDataSource = IpRemoteDataSource(requestManager: requestManager);
+    ipRemoteDataSource = IpRemoteDataSource(requestManager: mockRequestManager);
   });
 
-  test('test success ip api call', () async {
-    final tempIpModelResponse = {'success': true, 'ip': '172.192.1.1', 'type': 'local'};
-    when(requestManager.getRequest(path: anyNamed('path'), params: null, headers: null)).thenAnswer((_) async => tempIpModelResponse);
-    final result = await ipRemoteDataSource.getIp();
-    expect(result.success, true);
-    expect(result, isA<IpModel>());
-    expect(result, equals(IpModel(success: true,ip: '172.192.1.1',type: 'local')));
-  });
 
-  test('testing timeout error', ()async{
-    when(requestManager.getRequest(path: anyNamed('path'))).thenThrow(NetworkException(message: 'timeout error'));
-    expect(() async => await ipRemoteDataSource.getIp(), throwsA(isA<NetworkException>()));
-    expect(()async => await ipRemoteDataSource.getIp(), throwsA(equals(NetworkException(message: 'timeout error'))));
-  });
+  group('test ip remote data source', () {
 
+    test('test success ip api call', () async {
+      final tempIpModelResponse = {'success': true, 'ip': '172.192.1.1', 'type': 'local'};
+      when(mockRequestManager.getRequest(path: anyNamed('path'), params: null, headers: null)).thenAnswer((_) async => tempIpModelResponse);
+      final result = await ipRemoteDataSource.getIp();
+      expect(result.success, true);
+      expect(result, isA<IpModel>());
+      expect(result, equals(IpModel(success: true,ip: '172.192.1.1',type: 'local')));
+    });
+
+    test('testing timeout error', ()async{
+      when(mockRequestManager.getRequest(path: anyNamed('path'))).thenThrow(NetworkException(message: 'timeout error'));
+      expect(() async => await ipRemoteDataSource.getIp(), throwsA(isA<NetworkException>()));
+      expect(()async => await ipRemoteDataSource.getIp(), throwsA(equals(NetworkException(message: 'timeout error'))));
+    });
+
+  });
 
 
 }
