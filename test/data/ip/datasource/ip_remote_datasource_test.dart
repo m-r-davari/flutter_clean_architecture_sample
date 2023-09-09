@@ -31,7 +31,6 @@ void main() async {
     ipRemoteDataSource = IpRemoteDataSource(requestManager: requestManager);
   });
 
-
   test('test success ip api call', () async {
     final tempIpModelResponse = {'success': true, 'ip': '172.192.1.1', 'type': 'local'};
     when(requestManager.getRequest(path: anyNamed('path'), params: null, headers: null)).thenAnswer((_) async => tempIpModelResponse);
