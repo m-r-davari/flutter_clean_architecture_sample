@@ -3,6 +3,7 @@
 *.html linguist-detectable=false
 *.js linguist-detectable=false
 *.c++ linguist-detectable=false
+*.c linguist-detectable=false
 *.swift linguist-detectable=false
 *.java linguist-detectable=false
 *.kotlin linguist-detectable=false
