@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../ip/pages/ip_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -32,7 +31,7 @@ class _HomePageState extends State<HomePage> {
               onPressed: (){
                 Navigator.push(context, MaterialPageRoute(builder: (ctx)=> IpPage()));
               },
-              child: const Text(' Whats My IP')
+              child: const Text('Whats My IP')
           )
         ],
       ),

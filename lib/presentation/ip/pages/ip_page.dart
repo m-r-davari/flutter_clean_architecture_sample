@@ -1,5 +1,4 @@
 import 'package:flutter_clean_architecture_sample/core/di/injector.dart';
-import 'package:flutter_clean_architecture_sample/core/states/livedata.dart';
 import 'package:flutter_clean_architecture_sample/core/states/ui_state.dart';
 import 'package:flutter_clean_architecture_sample/domain/ip/entity/ip_entity.dart';
 import 'package:flutter_clean_architecture_sample/domain/ip/usecase/ip_usecase.dart';
@@ -18,33 +17,39 @@ class IpPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('IP Page'),
       ),
-      body: ChangeNotifierProvider<LiveData<UIState<IpEntity>>>(
+      body: ChangeNotifierProvider<IpProvider>(
         create: (ctx){
           _ipProvider.fetchIp();
-          return _ipProvider.ipUiState;
+          return _ipProvider;
         },
-        child: _bodyWidget(),
+        child: const IpPageBodyContent(),
       ),
     );
   }
+}
 
 
-  Widget _bodyWidget(){
+
+class IpPageBodyContent extends StatelessWidget {
+  const IpPageBodyContent({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     return Center(
       child: Container(
         margin: const EdgeInsets.all(16),
         padding: const EdgeInsets.all(100),
         decoration: BoxDecoration(
-          color: const Color(0xffEDEDED),
-          borderRadius: const BorderRadius.all(Radius.circular(8)),
-          border: Border.all(color: Colors.grey.withOpacity(0.3),width: 0.5),
-          boxShadow: const [
-            BoxShadow(color: Colors.black12,blurRadius: 20,spreadRadius: 5)
-          ]
+            color: const Color(0xffEDEDED),
+            borderRadius: const BorderRadius.all(Radius.circular(8)),
+            border: Border.all(color: Colors.grey.withOpacity(0.3),width: 0.5),
+            boxShadow: const [
+              BoxShadow(color: Colors.black12,blurRadius: 20,spreadRadius: 5)
+            ]
         ),
-        child: Consumer<LiveData<UIState<IpEntity>>>(
-          builder: (ctx,data,_){
-            var state = data.getValue();
+        child: Consumer<IpProvider>(
+          builder: (ctx,provider,_){
+            var state = provider.ipUiState;
             print('---ssss----- $state');
             if(state is LoadingState){
               return const SizedBox(width: 40,height: 40,child: CircularProgressIndicator());
@@ -69,7 +74,7 @@ class IpPage extends StatelessWidget {
                 children: [
                   IconButton(
                     onPressed: (){
-                      _ipProvider.fetchIp();
+                      provider.fetchIp();
                     },
                     icon: const Icon(Icons.refresh),
                   ),
@@ -87,6 +92,5 @@ class IpPage extends StatelessWidget {
       ),
     );
   }
-
-
 }
+

@@ -34,7 +34,7 @@ void main()async{
     };
 
     final Response<dynamic> tempResponse = Response(data: tempJson, requestOptions: RequestOptions());
-    when(mockDio.get(any,queryParameters: null,data: null,cancelToken: null, onReceiveProgress: null,options: anyNamed('options'))).thenAnswer((realInvocation) async=> tempResponse);
+    when(mockDio.get(any,queryParameters: null,data: null,cancelToken: null, onReceiveProgress: null,options: anyNamed('options'))).thenAnswer((Invocation realInvocation) async=> tempResponse);
     final result = await dioApiRequestManager.getRequest(path: 'any');
     expect(result, tempResponse.data);
 
