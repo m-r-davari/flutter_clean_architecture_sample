@@ -1,4 +1,8 @@
+*.dart linguist-detectable=true
 *.css linguist-detectable=false
 *.html linguist-detectable=false
 *.js linguist-detectable=false
-*.dart linguist-detectable=true
+*.c++ linguist-detectable=false
+*.swift linguist-detectable=false
+*.java linguist-detectable=false
+*.kotlin linguist-detectable=false
