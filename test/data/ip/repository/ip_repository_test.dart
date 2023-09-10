@@ -31,9 +31,10 @@ void main()async{
       result.fold((l) => null, (r) {
         data = IpEntity.fromModel(tempIpModel);
       });
+
       expect(result.isRight(), true);
-      expect(data.success,true);
       expect(data, isA<IpEntity>());
+      expect(data.success,true);
       expect(data, equals(IpEntity(ip: '192.168.1.1', type: 'local', success: true)));
 
     });
@@ -45,8 +46,6 @@ void main()async{
       result.fold((l) {
         expect(l, isA<GeneralFailure>());
       }, (r) => null);
-
-
     });
 
   });

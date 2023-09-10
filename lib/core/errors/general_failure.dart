@@ -9,4 +9,10 @@ class GeneralFailure extends Failure{
   @override
   String get message => _message;
 
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) || other is GeneralFailure && runtimeType == other.runtimeType && _message == other._message;
+
+  @override
+  int get hashCode => _message.hashCode;
 }

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_clean_architecture_sample/core/errors/network_exception.dart';
 import 'package:flutter_clean_architecture_sample/core/network/i_api_request_manager.dart';
 import 'package:dio/dio.dart';
@@ -11,6 +12,11 @@ class DioApiRequestManager extends IApiRequestManager {
   BaseOptions? options;
   String baseUrl;
 
+
+  @visibleForTesting
+  set dio(Dio value) {
+    _dio = value;
+  }
 
   DioApiRequestManager({required this.baseUrl}){
     options = BaseOptions(

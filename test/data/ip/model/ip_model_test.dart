@@ -26,7 +26,9 @@ void main()async{
 
     test('fromJson Test for ip model', (){
 
+      expect(IpModel.fromJson(jsonIpResponse), isA<IpModel>());
       expect(IpModel.fromJson(jsonIpResponse), ipModel);
+      expect(IpModel.fromJson(jsonIpResponse).success, true);
 
     });
 
