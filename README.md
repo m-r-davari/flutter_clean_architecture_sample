@@ -1,6 +1,6 @@
 # Clean Architecture Flutter Sample App
 
-This is a simple Flutter sample app that demonstrates the principles of Clean Architecture, as introduced by Uncle Bob (Robert C. Martin). The app fetches the user's IP address from the network and displays it in the center of the screen. It also includes a retry mechanism in case of network errors.
+This is a simple Flutter sample app that demonstrates the principles of Clean Architecture, as introduced by Uncle Bob (Robert C. Martin), and uses different state management approaches (Provider and Riverpod) for reactive programming. The app fetches the user's IP address from the network and displays it in the center of the screen. It also includes a retry mechanism in case of network errors.
 
 ## Features
 
