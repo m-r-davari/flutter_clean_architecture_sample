@@ -16,6 +16,10 @@ This project follows the Clean Architecture pattern, which separates the applica
 - **Domain**: Contains interfaces of repositories, use cases, and entities.
 - **Data**: Manages data sources (e.g., network, database), implements repositories, and contains models. Uses Dio for network management.
 
+## Clean Architecture Flutter Diagram
+
+![Clean-Architecture-Flutter-Diagram](https://i0.wp.com/resocoder.com/wp-content/uploads/2019/08/Clean-Architecture-Flutter-Diagram.png?w=556&ssl=1)
+
 ## Dependencies
 
 - [Provider](https://pub.dev/packages/provider): State management library.
