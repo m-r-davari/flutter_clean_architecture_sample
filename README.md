@@ -7,12 +7,13 @@ This is a simple Flutter sample app that demonstrates the principles of Clean Ar
 - Fetches the user's IP address from the network.
 - Handles network errors and provides a retry option.
 - Demonstrates Clean Architecture principles.
+- Incorporates the implementation of different state managements (Provider, Riverpod).
 
 ## Architecture Overview
 
 This project follows the Clean Architecture pattern, which separates the application into different layers:
 
-- **Presentation**: Contains the UI components and handles user interactions. Uses the Provider package for state management.
+- **Presentation**: Contains the UI components and handles user interactions. Uses the Provider and Riverpod package for state management.
 - **Domain**: Contains interfaces of repositories, use cases, and entities.
 - **Data**: Manages data sources (e.g., network, database), implements repositories, and contains models. Uses Dio for network management.
 
@@ -23,8 +24,10 @@ This project follows the Clean Architecture pattern, which separates the applica
 ## Dependencies
 
 - [Provider](https://pub.dev/packages/provider): State management library.
+- [Riverpod](https://pub.dev/packages/flutter_riverpod): State management library.
 - [Dio](https://pub.dev/packages/dio): HTTP client for making network requests.
 - [GetIt](https://pub.dev/packages/get_it): Dependency injection package.
+- [Dartz](https://pub.dev/packages/dartz): Functional programming in Dart.
 - [Mockito](https://pub.dev/packages/mockito): Mocking library for testing (used for mocking test dependencies).
 - [build_runner](https://pub.dev/packages/build_runner): Dev dependency for code generation (used for code generation).
 

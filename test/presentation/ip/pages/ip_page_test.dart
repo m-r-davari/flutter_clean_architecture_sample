@@ -5,8 +5,8 @@ import 'package:flutter_clean_architecture_sample/core/errors/general_failure.da
 import 'package:flutter_clean_architecture_sample/core/states/ui_state.dart';
 import 'package:flutter_clean_architecture_sample/domain/ip/entity/ip_entity.dart';
 import 'package:flutter_clean_architecture_sample/domain/ip/usecase/i_ip_usecase.dart';
-import 'package:flutter_clean_architecture_sample/presentation/ip/pages/ip_page.dart';
-import 'package:flutter_clean_architecture_sample/presentation/ip/providers/ip_provider.dart';
+import 'package:flutter_clean_architecture_sample/presentation/ip/with_provider/pages/ip_page.dart';
+import 'package:flutter_clean_architecture_sample/presentation/ip/with_provider/providers/ip_provider.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:provider/provider.dart';

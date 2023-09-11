@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_clean_architecture_sample/core/di/injector.dart';
 import 'package:flutter_clean_architecture_sample/presentation/home/pages/home_page.dart';
-import 'package:flutter_clean_architecture_sample/presentation/ip/pages/ip_page.dart';
+import 'package:flutter_clean_architecture_sample/presentation/ip/with_provider/pages/ip_page.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main()async{

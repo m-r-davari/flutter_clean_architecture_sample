@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../ip/pages/ip_page.dart';
+
+import '../../ip/with_provider/pages/ip_page.dart' as IpPageWithProvider;
+import '../../ip/with_riverpod/pages/ip_page.dart' as IpPageWithRiverPod;
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -29,9 +31,16 @@ class _HomePageState extends State<HomePage> {
         children: [
           ElevatedButton(
               onPressed: (){
-                Navigator.push(context, MaterialPageRoute(builder: (ctx)=> IpPage()));
+                Navigator.push(context, MaterialPageRoute(builder: (ctx)=> IpPageWithProvider.IpPage()));
               },
-              child: const Text('Whats My IP')
+              child: const Text('Whats My IP - With Provider')
+          ),
+          const SizedBox(height: 8,),
+          ElevatedButton(
+              onPressed: (){
+                Navigator.push(context, MaterialPageRoute(builder: (ctx)=> const IpPageWithRiverPod.IpPage()));
+              },
+              child: const Text('Whats My IP - With RiverPod')
           )
         ],
       ),

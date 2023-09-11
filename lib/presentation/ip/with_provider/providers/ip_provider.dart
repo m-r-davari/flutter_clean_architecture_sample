@@ -4,7 +4,8 @@ import 'package:flutter_clean_architecture_sample/domain/ip/usecase/i_ip_usecase
 import 'package:dartz/dartz.dart';
 import 'package:flutter/cupertino.dart';
 
-import '../../../core/errors/failure.dart';
+import '../../../../core/errors/failure.dart';
+
 
 class IpProvider with ChangeNotifier {
 

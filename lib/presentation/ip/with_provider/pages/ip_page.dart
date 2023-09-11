@@ -1,15 +1,16 @@
 import 'package:flutter_clean_architecture_sample/core/di/injector.dart';
 import 'package:flutter_clean_architecture_sample/core/states/ui_state.dart';
 import 'package:flutter_clean_architecture_sample/domain/ip/entity/ip_entity.dart';
-import 'package:flutter_clean_architecture_sample/domain/ip/usecase/ip_usecase.dart';
-import 'package:flutter_clean_architecture_sample/presentation/ip/providers/ip_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import '../../../../domain/ip/usecase/i_ip_usecase.dart';
+import '../providers/ip_provider.dart';
 
 class IpPage extends StatelessWidget {
 
   IpPage({Key? key}) : super(key: key);
-  final IpProvider _ipProvider = IpProvider(ipUseCase: injector<IpUseCase>());
+  final IpProvider _ipProvider = IpProvider(ipUseCase: injector<IIpUseCase>());
 
   @override
   Widget build(BuildContext context) {
