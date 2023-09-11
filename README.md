@@ -35,4 +35,4 @@ Before you begin, ensure you have Flutter installed on your local machine. For m
 Clone the repository to your local machine:
 
    ```bash
-   git clone https://github.com/your-username/clean-architecture-flutter-sample.git
+   git clone https://github.com/m-r-davari/flutter_clean_architecture_sample.git
