@@ -24,24 +24,27 @@ class IpPage extends StatelessWidget {
 
 }
 
-
+//todo : must change type
+var _ipProvider = NotifierProvider<IpNotifier, UIState>((){
+  IpNotifier ipNotifier = IpNotifier(ipUseCase: injector<IIpUseCase>());
+  Future.delayed(Duration.zero,(){
+    ipNotifier.fetchIp();
+  });
+  return ipNotifier;
+});
 
 class IpPageBodyContent extends ConsumerWidget {
 
-  final ipProvider = NotifierProvider<IpNotifier, UIState>((){
-    IpNotifier ipNotifier = IpNotifier(ipUseCase: injector<IIpUseCase>());
-    Future.delayed(Duration.zero,(){
-      ipNotifier.fetchIp();
-    });
-    return ipNotifier;
-  });
-
+  @visibleForTesting
+  set ipProvider(value) {
+    _ipProvider = value;
+  }
 
   IpPageBodyContent({super.key});
 
   @override
   Widget build(BuildContext context,WidgetRef ref) {
-    final state = ref.watch(ipProvider);
+    final state = ref.watch(_ipProvider);
     print('----> state is $state');
     return Center(
       child: Container(
@@ -83,7 +86,7 @@ class IpPageBodyContent extends ConsumerWidget {
         children: [
           IconButton(
             onPressed: (){
-              ref.watch(ipProvider.notifier).fetchIp();
+              ref.watch(_ipProvider.notifier).fetchIp();
             },
             icon: const Icon(Icons.refresh),
           ),

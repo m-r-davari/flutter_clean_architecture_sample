@@ -1,10 +1,11 @@
 import 'package:dartz/dartz.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter_clean_architecture_sample/core/di/injector.dart';
 import 'package:flutter_clean_architecture_sample/core/states/ui_state.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/errors/failure.dart';
 import '../../../../domain/ip/entity/ip_entity.dart';
 import '../../../../domain/ip/usecase/i_ip_usecase.dart';
-
 
 class IpNotifier extends Notifier<UIState>{
 
@@ -14,6 +15,11 @@ class IpNotifier extends Notifier<UIState>{
   @override
   UIState build() {
     return LoadingState();
+  }
+
+  @visibleForTesting
+  void changeState(UIState uiState){
+    state = uiState;
   }
 
   Future<dynamic> fetchIp() async{
