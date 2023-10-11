@@ -3,9 +3,6 @@ import 'package:flutter_clean_architecture_sample/domain/ip/entity/ip_entity.dar
 import 'package:flutter/material.dart';
 import 'package:flutter_clean_architecture_sample/presentation/ip/with_riverpod/notifiers/ip_notifier.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../core/di/injector.dart';
-import '../../../../domain/ip/usecase/i_ip_usecase.dart';
-
 
 
 class IpPage extends StatelessWidget {
@@ -17,34 +14,24 @@ class IpPage extends StatelessWidget {
         appBar: AppBar(
           title: const Text('IP Page'),
         ),
-        body: IpPageBodyContent(),
+        body: IpPageBodyContent(ipProvider: ipProvider,),
       ),
     );
   }
 
 }
 
-//todo : must change type
-var _ipProvider = NotifierProvider<IpNotifier, UIState>((){
-  IpNotifier ipNotifier = IpNotifier(ipUseCase: injector<IIpUseCase>());
-  Future.delayed(Duration.zero,(){
-    ipNotifier.fetchIp();
-  });
-  return ipNotifier;
-});
+
+
 
 class IpPageBodyContent extends ConsumerWidget {
 
-  @visibleForTesting
-  set ipProvider(value) {
-    _ipProvider = value;
-  }
-
-  IpPageBodyContent({super.key});
+  final ipProvider;
+  const IpPageBodyContent({required this.ipProvider,super.key});
 
   @override
   Widget build(BuildContext context,WidgetRef ref) {
-    final state = ref.watch(_ipProvider);
+    final state = ref.watch(ipProvider);
     print('----> state is $state');
     return Center(
       child: Container(
@@ -86,7 +73,7 @@ class IpPageBodyContent extends ConsumerWidget {
         children: [
           IconButton(
             onPressed: (){
-              ref.watch(_ipProvider.notifier).fetchIp();
+              ref.watch(ipProvider.notifier).fetchIp();
             },
             icon: const Icon(Icons.refresh),
           ),
