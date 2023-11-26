@@ -9,6 +9,9 @@ This is a simple Flutter sample app that demonstrates the principles of Clean Ar
 - Demonstrates Clean Architecture principles.
 - Incorporates the implementation of different state managements (Provider, Riverpod).
 
+## TODO:
+- Implement IP address caching system
+
 ## Architecture Overview
 
 This project follows the Clean Architecture pattern, which separates the application into different layers:
