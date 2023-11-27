@@ -11,6 +11,7 @@ This is a simple Flutter sample app that demonstrates the principles of Clean Ar
 
 ## TODO:
 - Implement IP address caching system
+- Add multi-theme capability and dark mode
 
 ## Architecture Overview
 
